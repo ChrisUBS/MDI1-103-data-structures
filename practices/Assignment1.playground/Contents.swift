@@ -15,14 +15,20 @@ let studentGrades: [String: [Int]] = [
 // Step 3. Print summary of each student's grades, including avg
 print("STUDENT RECORD SUMMARY:\n")
 
-var currentBiggest = 0
+var currentBiggest: Double = 0.00
+var nameCurrentBiggest: String = ""
 for (student, grades) in studentGrades {
     print("Student: \(student)")
     print("Grades: \(grades)")
     
     var avg: Double = Double(grades.reduce(0, +)) / Double(grades.count)
+    if avg > currentBiggest {
+        currentBiggest = avg
+        nameCurrentBiggest = student
+    }
     
     print(String(format: "Average: %.2f\n", avg))
 }
 
-// Step 4. Add functionality to identify
+// Step 4. Add functionality to identify and print the student with the highest average grade
+print("The student \(nameCurrentBiggest) has the biggest average (\(currentBiggest))")
